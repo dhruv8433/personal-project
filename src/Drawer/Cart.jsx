@@ -17,7 +17,15 @@ const Cart = ({ setOpen }) => {
 
   const placeOrder = () => {
     localStorage.setItem("Cart", "");
+    setCartInfo([]);
     toast.success("Order Placed Success");
+  };
+
+  const handleDelete = (id) => {
+    const updatedCartInfo = cartInfo.filter((item) => item.id !== id);
+    setCartInfo(updatedCartInfo);
+    localStorage.setItem("Cart", JSON.stringify(updatedCartInfo));
+    toast.success("Product removed from cart!");
   };
   return (
     <div>
@@ -37,11 +45,22 @@ const Cart = ({ setOpen }) => {
           {cartInfo.length > 0 ? (
             cartInfo.map((response) => {
               console.log(response);
-              return <ProductCard response={response} />;
+              return (
+                <ProductCard response={response} handleDelete={handleDelete} />
+              );
             })
           ) : (
-            <Box display={"flex"} justifyContent={"center"} textAlign={"center"} alignItems={"center"} height={"90vh"}>
-              <img src="https://cdn.dribbble.com/users/2370289/screenshots/6150406/media/22ba45c9f91f27e65e90668eac2a92b5.jpg" height={"200px"} />
+            <Box
+              display={"flex"}
+              justifyContent={"center"}
+              textAlign={"center"}
+              alignItems={"center"}
+              height={"90vh"}
+            >
+              <img
+                src="https://cdn.dribbble.com/users/2370289/screenshots/6150406/media/22ba45c9f91f27e65e90668eac2a92b5.jpg"
+                height={"200px"}
+              />
             </Box>
           )}
           <Box>

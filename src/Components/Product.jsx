@@ -7,28 +7,24 @@ const Product = ({ data }) => {
   const [existingCartData, setExistingCartData] = useState([]);
   // when user click on add button
   const handleClick = (productData) => {
-    const Cart = localStorage.getItem("Cart");
+    const cartData = JSON.parse(localStorage.getItem("Cart")) || [];
 
-    if (Cart) {
-      const existingCartData = JSON.parse(localStorage.getItem("Cart")) || [];
-      setExistingCartData(existingCartData);
+    // Check if the product is already in the cart based on its id
+    const isProductInCart = cartData.some((item) => item.id === productData.id);
 
-      // Check if the product is already in the cart based on its id
-      const isProductInCart = existingCartData.some(
-        (item) => item.id === productData.id
-      );
-
-      if (isProductInCart) {
-        toast.info("Product is already in the cart.");
-        return;
-      }
+    if (isProductInCart) {
+      toast.info("Product is already in the cart.");
+      return;
     }
-    setExistingCartData(data)
-    // Add the new product data to the array
-    existingCartData.push(productData);
 
-    // Update local storage with the updated array
-    localStorage.setItem("Cart", JSON.stringify(existingCartData));
+    // Add the new product data to the cart data
+    cartData.push(productData);
+
+    // Update local storage with the updated cart data
+    localStorage.setItem("Cart", JSON.stringify(cartData));
+
+    // Update the state to trigger a re-render
+    setExistingCartData(cartData);
 
     toast.success("Product added to cart!");
   };

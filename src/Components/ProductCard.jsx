@@ -3,23 +3,7 @@ import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import React from "react";
 import { toast } from "react-toastify";
 
-const ProductCard = ({ response }) => {
-  const handleDelete = (id) => {
-    // Retrieve existing cart data from local storage
-    const existingCartData = JSON.parse(localStorage.getItem("Cart")) || [];
-
-    // Find the index of the product with the matching id
-    const productIndex = existingCartData.findIndex((item) => item.id === id);
-
-    if (productIndex !== -1) {
-      // Remove the product from the array
-      existingCartData.splice(productIndex, 1);
-
-      // Update local storage with the updated array
-      localStorage.setItem("Cart", JSON.stringify(existingCartData));
-      toast.success("Product removed from cart.");
-    }
-  };
+const ProductCard = ({ response, handleDelete }) => {
   return (
     <div>
       <Box
@@ -37,7 +21,7 @@ const ProductCard = ({ response }) => {
               style={{
                 maxWidth: "100%",
                 maxHeight: "100%",
-                marginRight: 2
+                marginRight: 2,
               }}
             />
           </Box>
