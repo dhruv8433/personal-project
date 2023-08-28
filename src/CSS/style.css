@@ -1,0 +1,37 @@
+:root {
+  --background: #111;
+  --color: #1968d6;
+  --layout: #fdd2c3;
+  --layout1: #d1ebec
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: var(--layout);
+}
+
+.product-price {
+  color: var(--color);
+}
+
+.swiper-div {
+  height: 500px;
+}
+
+.footer {
+  background-color: var(--layout);
+  background: url("https://img.freepik.com/premium-photo/photo-three-colorful-toothbrushes-vibrant-background-with-copy-space_176841-6125.jpg?w=1380")
+    no-repeat;
+  background-size: cover;
+  /* justify-content: ; */
+}
+
+.navigation {
+  background-color: var(--layout);
+  color: #111;
+}
+
+.link {
+  color: rgb(83, 80, 80);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
