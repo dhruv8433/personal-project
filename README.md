@@ -71,14 +71,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Folder Structure
 
-1. Components
-   Contain all components that used in project
-
-2. Layout
-   That contain Layout of Project
-
-3. View
-   That contain view pages
-
-4. Pages
-   That conatin whole page
+### 1. Components
+    Contain all components that used in project
+### 2. Drawer
+    Contain Drawer that used in project
+### 3. Pages
+    Contain all Pages that used in project
+### 4. View
+    Contain all View files that used in project
+### 5. Layout
+    Contain Layout of project
+### 6. JSON
+    Contain all jSON files that used in project
+### 7. CSS
+    Contain CSS file that used in project
