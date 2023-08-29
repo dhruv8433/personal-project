@@ -2,7 +2,7 @@
   --background: #111;
   --color: #1968d6;
   --layout: #fdd2c3;
-  --layout1: #d1ebec
+  --layout1: #d1ebec;
 }
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
   background-color: var(--layout);
@@ -34,4 +34,17 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+}
+
+.swiper-button-next {
+  background: white;
+  padding: 10px;
+  margin-right: -19px;
+  border-radius: 10px;
+}
+.swiper-button-prev {
+  padding: 10px;
+  background: white;
+  margin-left: -19px;
+  border-radius: 10px;
 }

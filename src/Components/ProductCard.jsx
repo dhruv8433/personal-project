@@ -1,7 +1,6 @@
 import { DeleteRounded } from "@mui/icons-material";
-import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Typography } from "@mui/material";
 import React from "react";
-import { toast } from "react-toastify";
 
 const ProductCard = ({ response, handleDelete }) => {
   return (

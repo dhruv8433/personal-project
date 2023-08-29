@@ -1,10 +1,13 @@
-import { FavoriteBorder, Share } from "@mui/icons-material";
-import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
+import { FavoriteBorder, Share, Visibility } from "@mui/icons-material";
+import { Backdrop, Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import DetailedPage from "../Backdrop/DetailedPage";
 
 const Product = ({ data }) => {
   const [existingCartData, setExistingCartData] = useState([]);
+  const [detailed, setDetailed] = useState(false);
+
   // when user click on add button
   const handleClick = (productData) => {
     const cartData = JSON.parse(localStorage.getItem("Cart")) || [];
@@ -43,6 +46,14 @@ const Product = ({ data }) => {
       borderRadius={2}
       sx={{ background: "white", cursor: "pointer" }}
     >
+      <Box position={"absolute"} ml={"11%"} mt={"-6px"}>
+        <IconButton onClick={() => setDetailed(true)} sx={{border: "1px solid"}} size="small">
+          <Visibility />
+        </IconButton>
+      </Box>
+      <Backdrop open={detailed} sx={{zIndex: 100}}>
+        <DetailedPage response={data} closeBackdrop={setDetailed}/>
+      </Backdrop>
       <Box
         width={200}
         flexWrap={"wrap"}
