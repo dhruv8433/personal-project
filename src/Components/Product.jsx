@@ -39,7 +39,7 @@ const Product = ({ data }) => {
   return (
     <Box
       overflow={"hidden"}
-      mb={1}
+      mb={3}
       border={"1px solid"}
       width={"max-content"}
       p={2}
