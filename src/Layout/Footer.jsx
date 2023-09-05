@@ -9,6 +9,7 @@ import {
 import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { LinkedIn, Twitter, WhatsApp } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
@@ -19,9 +20,9 @@ const Footer = () => {
               <strong>Quick Links</strong>
             </Typography>
             <Divider />
-            <Typography>Home</Typography>
-            <Typography>About</Typography>
-            <Typography>Contact</Typography>
+            <Link className="link" to={'/'}>Home</Link>
+            <Link className="link" to={'/about'}>About</Link>
+            <Link className="link" to={'/contact'}>Contact</Link>
           </Box>
           <Box pt={5} textAlign={"end"}>
             <Typography>
