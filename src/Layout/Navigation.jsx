@@ -4,28 +4,44 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import { Drawer, Tab, Tabs } from "@mui/material";
 import { ShoppingBagOutlined } from "@mui/icons-material";
 import Cart from "../Drawer/Cart";
-import { Link } from "react-router-dom";
-
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { Link, useLocation } from "react-router-dom";
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+  const [activeTabIndex, setActiveTabIndex] = React.useState(0);
+
+  const location = useLocation();
+
+  const handleChange = () => {
+    const pathname = location.pathname;
+
+    if (pathname === "/") {
+      setActiveTabIndex(0);
+    } else if (pathname === "/about") {
+      setActiveTabIndex(1);
+    } else if (pathname === "/contact") {
+      setActiveTabIndex(2);
+    }
   };
+
+  React.useEffect(() => {
+    handleChange();
+  }, [location.pathname]);
 
   return (
     <div className="navigation">
       <AppBar
         position="static"
-        sx={{ background: "var(--layout)", mt: -1, height: "55px" }}
+        sx={{
+          background: "var(--layout)",
+          mt: -1,
+          height: "55px",
+          width: "auto",
+        }}
       >
         <Container>
           <Toolbar
@@ -39,7 +55,7 @@ function ResponsiveAppBar() {
               justifyItems={"center"}
               textAlign={"center"}
             >
-              <Link to={'/'} className="link">
+              <Link to={"/"} className="link">
                 <img
                   src="/logo.png"
                   alt="logo"
@@ -50,9 +66,9 @@ function ResponsiveAppBar() {
               </Link>
               <Box sx={{ borderBottom: 1, borderColor: "divider", ml: 3 }}>
                 <Tabs
-                  // value={value}
-                  // onChange={handleChange}
-                  aria-label="basic tabs example"
+                  value={activeTabIndex}
+                  onChange={handleChange}
+                  indicatorColor="primary"
                 >
                   <Link className="link" to={"/"}>
                     <Tab label="Home" />
@@ -65,25 +81,6 @@ function ResponsiveAppBar() {
                   </Link>
                 </Tabs>
               </Box>
-            </Box>
-
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "flex", md: "none" },
-                justifyContent: "space-between",
-              }}
-            >
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
             </Box>
 
             <IconButton onClick={() => setOpen(true)}>
