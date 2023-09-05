@@ -85,5 +85,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     Contain all jSON files that used in project
 ### 7. CSS
     Contain CSS file that used in project
-### 7. Backdrop
+### 8. Backdrop
     Contain backdrop file that used in project
